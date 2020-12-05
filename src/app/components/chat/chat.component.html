@@ -1,0 +1,124 @@
+<!-- <h1>Chat</h1>
+<hr /> -->
+<!-- <div class="app-mensajes" id="app-mensajes"> -->
+<!-- <div
+    [ngClass]="{ 'text-right': chatService.usuario.uid == chat.uid }"
+    *ngFor="let chat of chatService.chats"
+  >
+    <img [src]="chat.imagen" class="img-thumb rounded-circle" />
+    <span
+      class="badge"
+      [ngClass]="{
+        'badge-primary': chatService.usuario.uid == chat.uid,
+        'badge-success': chatService.usuario.uid != chat.uid
+      }"
+      >{{ chat.nombre }}</span
+    >
+    <p>{{ chat.fecha | date: "short" }}</p>
+    <p>{{ chat.mensaje }}</p>
+  </div>
+</div>
+
+<input
+  class="form-control"
+  type="text"
+  name="mensaje"
+  [(ngModel)]="mensaje"
+  placeholder="EnviarMensaje"
+  (keyup.enter)="enviarMensaje()"
+/> -->
+
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+    <div class="row container d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-bordered">
+          <div class="card-header">
+            <h4 class="card-title"><strong>Chat</strong></h4>
+          </div>
+          <div
+            class="ps-container ps-theme-default ps-active-y"
+            id="chat-content"
+            style="overflow-y: scroll !important; height: 400px !important"
+          >
+            <!-- <div *ngFor="let chat of chatService.chats"> -->
+            <!-- <div class="media media-meta-day">Hoy</div> -->
+            <div
+              *ngFor="let chat of chatService.chats; let i = index"
+              class="media media-chat"
+              [ngClass]="{
+                'media-chat-reverse': chatService.usuario.uid == chat.uid
+              }"
+            >
+              <img class="avatar" [src]="chat.imagen | noimage" />
+              <div class="media-body">
+                <p>{{ chat.mensaje }}</p>
+                <small>
+                  <p class="meta">
+                    <time datetime="2018">{{
+                      chat.fecha | date: "HH:mm:ss"
+                    }}</time>
+                  </p>
+                </small>
+              </div>
+            </div>
+            <!-- </div> -->
+
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px">
+              <div
+                class="ps-scrollbar-x"
+                tabindex="0"
+                style="left: 0px; width: 0px"
+              ></div>
+            </div>
+            <div
+              class="ps-scrollbar-y-rail"
+              style="top: 0px; height: 0px; right: 2px"
+            >
+              <div
+                class="ps-scrollbar-y"
+                tabindex="0"
+                style="top: 0px; height: 2px"
+              ></div>
+            </div>
+          </div>
+
+          <!-- <input
+            class="form-control"
+            type="text"
+            name="mensaje"
+            [(ngModel)]="mensaje"
+            placeholder="EnviarMensaje"
+            (keyup.enter)="enviarMensaje()"
+          /> -->
+
+          <div class="publisher bt-1 border-light">
+            <img
+              class="avatar avatar-xs"
+              [src]="chatService.usuario.imagen"
+              alt="..."
+            />
+            <input
+              class="publisher-input"
+              type="text"
+              name="mensaje"
+              [(ngModel)]="mensaje"
+              placeholder="Enviar Mensaje"
+              (keyup.enter)="enviarMensaje()"
+            />
+            <!-- <span class="publisher-btn file-group">
+              <i class="fa fa-paperclip file-browser"></i> <input type="file" />
+            </span>
+            <a class="publisher-btn" href="#" data-abc="true"
+              ><i class="fa fa-smile"></i
+            ></a>
+            <a class="publisher-btn text-info" href="#" data-abc="true"
+              ><i class="fa fa-paper-plane"></i
+            ></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
